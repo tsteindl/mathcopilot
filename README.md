@@ -14,6 +14,8 @@ npm install -g @mathpix/mpx-cli
 mpx login
 ```
 ## TODO
+### Latex
+- look at https://detexify.kirelabs.org/classify.html training data or https://github.com/Wikunia/HE2LaTeX/tree/master
 ### Python
 - configurable API to wolfram alpha
 - text detection to latex expression
