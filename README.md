@@ -5,6 +5,8 @@ Python project that detects handwritten equations and mathematical statements in
 - Uses mathpix to parse handwritten equation to latex
 - Uses wolframclient (""[]) to evaluate expressions
 
+https://github.com/xournalpp/xournalpp/issues/2747
+
 ```
 npm install -g @mathpix/mpx-cli
 mpx login

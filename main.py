@@ -2,6 +2,8 @@ from wolframclient.evaluation import WolframLanguageSession
 from wolframclient.language import wl, wlexpr
 import subprocess
 import re
+import os
+import sys
 
 replacement_dict = {
     'e': 'E'
@@ -12,13 +14,19 @@ def tex_to_wolfram(s):
     replaced_string = re.sub(pattern, lambda match: replacement_dict[match.group()], s)
     replaced_string = replaced_string.replace("\\", "\\\\")
     return replaced_string
-    # return s.replace("\\", "\\\\").replace("e", "E")
+
+if len(sys.argv) > 1:
+    current_dir = sys.argv[1]
+    os.chdir(current_dir)
 
 
-input_file = "sum"
-tex_file_path = f"data/{input_file}.tex"
+input_file = "curr"
+tex_file_path = f"./data/{input_file}.tex"
 
-command = ["mpx", "convert", f"data/{input_file}.png", tex_file_path]
+print("current pwd: ")
+print(os.getcwd())
+
+command = ["mpx", "convert", f"./data/{input_file}.png", tex_file_path]
 
 try:
     subprocess.run(command, check=True)

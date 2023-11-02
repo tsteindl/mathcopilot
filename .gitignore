@@ -2,3 +2,4 @@
 venv
 HE2LaTeX
 node_modules
+?.lua
