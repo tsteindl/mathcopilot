@@ -7,6 +7,8 @@ Python project that detects handwritten equations and mathematical statements in
 
 https://github.com/xournalpp/xournalpp/issues/2747
 
+https://xournalpp.github.io/guide/plugins/plugins/
+
 ```
 npm install -g @mathpix/mpx-cli
 mpx login

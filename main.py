@@ -17,40 +17,29 @@ def tex_to_wolfram(s):
 
 if len(sys.argv) > 1:
     current_dir = sys.argv[1]
+    if len(sys.argv) > 2:
+        input_file = sys.argv[2]
+    else:
+        input_file = "curr"
     os.chdir(current_dir)
 
 
-input_file = "curr"
 tex_file_path = f"./data/{input_file}.tex"
 
-print("current pwd: ")
-print(os.getcwd())
-
-command = ["mpx", "convert", f"./data/{input_file}.png", tex_file_path]
+# command = ["mpx", "convert", f"./data/{input_file}.png", tex_file_path]
 
 try:
-    subprocess.run(command, check=True)
-    try:
-        with open(f"{tex_file_path}.zip", 'r') as file:
-            expr = file.read()
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
+    with open(f"{tex_file_path}.zip", 'r') as file:
+        expr = file.read()
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
 
-    session = WolframLanguageSession()
+session = WolframLanguageSession()
 
-    print(f"Parsed expression: {expr}")
-    wolf_expr = wlexpr(f'ToExpression["{tex_to_wolfram(expr)}", TeXForm]//N')
-    print(f"Evaluating : {wolf_expr}")
+print(f"Parsed expression: {expr}")
+wolf_expr = wlexpr(f'ToExpression["{tex_to_wolfram(expr)}", TeXForm]//N')
+# print(f"Evaluating : {wolf_expr}")
 
-    print(session.evaluate(wolf_expr))
+print(session.evaluate(wolf_expr))
 
-    session.terminate()
-
-except subprocess.CalledProcessError as e:
-    print(f"Command '{' '.join(command)}' failed with error code {e.returncode}.")
-except FileNotFoundError:
-    print("The 'mpx' command is not found. Make sure it's installed and in your system's PATH.")
-
-
-
-
+session.terminate()

@@ -3,3 +3,6 @@ venv
 HE2LaTeX
 node_modules
 ?.lua
+data/*
+demo.xopp
+*.autosave.xopp
