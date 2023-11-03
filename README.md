@@ -15,8 +15,9 @@ mpx login
 ```
 ## TODO
 ### Latex
-- look at https://detexify.kirelabs.org/classify.html training data or https://github.com/Wikunia/HE2LaTeX/tree/master
-### Look at
+- look at https://detexify.kirelabs.org/classify.html training data: problem only single symbols (no context)
+- https://github.com/Wikunia/HE2LaTeX/tree/master: somehow not working
+### Alternative to mathematica (would probably rewrite everything in lua without python)
 - https://rsmith.home.xs4all.nl/software/texcalc.html
 ### Python
 - configurable API to wolfram alpha
