@@ -16,6 +16,8 @@ mpx login
 ## TODO
 ### Latex
 - look at https://detexify.kirelabs.org/classify.html training data or https://github.com/Wikunia/HE2LaTeX/tree/master
+### Look at
+- https://rsmith.home.xs4all.nl/software/texcalc.html
 ### Python
 - configurable API to wolfram alpha
 - text detection to latex expression
@@ -31,3 +33,4 @@ mpx login
   - option to open mathematica in current context
 ### Javascript/?
 - onenote plugin
+
