@@ -14,6 +14,18 @@ npm install -g @mathpix/mpx-cli
 mpx login
 ```
 ## TODO
+### Latex
+- look at https://detexify.kirelabs.org/classify.html training data: problem only single symbols (no context)
+- https://github.com/Wikunia/HE2LaTeX/tree/master: somehow not working
+### Alternative to mathematica (would probably rewrite everything in lua without python)
+- https://rsmith.home.xs4all.nl/software/texcalc.html
+### Python
+- configurable API to wolfram alpha
+- text detection to latex expression
+- parser from latex expression to mathematica expression (mathematica supports this)
+### C++
+- get xournalpp fork running
+- xournalpp text detection
 - distribute into different folders (xournal, onenote, api)
 - onenote plugin
 - keep wolfram alive when not needed
