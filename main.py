@@ -4,6 +4,8 @@ import subprocess
 import re
 import os
 import sys
+import requests
+import config
 
 replacement_dict = {
     'e': 'E'
@@ -24,24 +26,46 @@ if len(sys.argv) > 1:
     os.chdir(current_dir)
 
 
-tex_file_path = f"./data/{input_file}.tex"
+def get_latex_mpx():
+    tex_file_path = f"./data/{input_file}.tex"
+    command = ["mpx", "convert", f"./data/{input_file}.png", tex_file_path]
 
-command = ["mpx", "convert", f"./data/{input_file}.png", tex_file_path]
-
-try:
+    command = ["mpx", "convert", f"./data/{input_file}.png", tex_file_path]
     subprocess.run(command, check=True)
     try:
         with open(f"{tex_file_path}.zip", 'r') as file:
             expr = file.read()
+            return expr
     except Exception as e:
         print(f"An error occurred: {str(e)}")
+    return None
 
+def get_latex_simpletex():
+    api_url="https://server.simpletex.cn/api/latex_ocr" # interface address
+    data = {  } # request data
+    header={ "token": config.TOKEN } # Authentication information, use UAT method here
+    file=[("file",("./img/int.png",open("./img/int.png", 'rb')))] # request file, field name is usually file
+    res = requests.post(api_url, files=file, data=data, headers=header) # Use the requests library to upload files
+    print(res.status_code)
+    print(res.text)
+    j = res["text"].json()
+    return j["res"]["latex"]
+
+def get_tex_from_file():
+    with open("img/sum.tex", "r") as file:
+        return file.read()
+    return None
+
+try:
+    expr = get_tex_from_file()
     session = WolframLanguageSession()
 
     print(f"Parsed expression: {expr}")
     wolf_expr = wlexpr(f'ToExpression["{tex_to_wolfram(expr)}", TeXForm]//N')
-    # print(f"Evaluating : {wolf_expr}")
+    print(f"Evaluating : {wolf_expr}")
 
     print(session.evaluate(wolf_expr))
 
     session.terminate()
+except:
+    print("error")

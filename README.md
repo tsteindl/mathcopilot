@@ -14,23 +14,18 @@ npm install -g @mathpix/mpx-cli
 mpx login
 ```
 ## TODO
-### Latex
-- look at https://detexify.kirelabs.org/classify.html training data or https://github.com/Wikunia/HE2LaTeX/tree/master
-### Look at
-- https://rsmith.home.xs4all.nl/software/texcalc.html
-### Python
-- configurable API to wolfram alpha
-- text detection to latex expression
-- parser from latex expression to mathematica expression (mathematica supports this)
-### C++
-- get xournalpp fork running
-- xournalpp text detection
+- distribute into different folders (xournal, onenote, api)
+- onenote plugin
+- keep wolfram alive when not needed
+- features
+  - Numerical evaluation/rational evaluation
+  - open context in wolfram
+  
+### Xournal
 - UI
   - On/Off switch
   - Configuration button (path to wolfram,...)
   - Popup that shows detected latex expression and enables copying
   - Popup that shows calculated expression
   - option to open mathematica in current context
-### Javascript/?
-- onenote plugin
 
